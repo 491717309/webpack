@@ -61,3 +61,23 @@ cnpm run dev
  或
 this.$parent.parentFun(msg)
 ```
+2. vue-路由传参数
+home.vue 通过query来传递num参数为1，相当与在 url 地址后面拼接参数
+```
+<template> 
+  <div> 
+    <h3>首页</h3> 
+    <router-link :to="{ path:'/home/game', query: { num: 1} }"> 
+      <button>显示<tton> 
+    </router-link> 
+  
+    <router-view></router-view> 
+  </div> 
+</template> 
+game.vue 子路由中通过 this.$route.query.num 来显示传递过来的参数
+
+<template> 
+  <h3>王者荣耀{{ this.$route.query.num }}</h3> 
+</template>
+```
+输出：王者荣耀1
