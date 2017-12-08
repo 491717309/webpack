@@ -3,7 +3,7 @@
 Webpack菜鸟入门
 
 webpack+vue的开发
-一.环境配置
+## 一.环境配置
 Webpack基于node环境，所以必须先安装node 安装完之后，命令输入node -v 显示版本号则表示node安装成功。
 Node安装成功npm也会安装，命令npm -v显示版本号则表示安装成功
 
@@ -11,15 +11,15 @@ Node安装成功npm也会安装，命令npm -v显示版本号则表示安装成�
 ```
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-//全局安装（推荐） 
+全局安装（推荐） 
 ```
 cnpm install webpack -g
 ```
-//局部安装到项目中
+局部安装到项目中
 ```
 cnpm install webpack --save-dev
 ```
-二.创建项目
+## 二.创建项目
 1.创建文件夹 webpack-vue
 
 2.进入文件目录输入命令 
@@ -57,6 +57,7 @@ cnpm run dev
 ### vue组件开发笔记
 1. 子组件直接触发父组件方法
 ```
-that.$emit("getHeight",that.name)  <box @getHeight = "parentFun"></box>
-that.$parent.name = that.name
+<box @ChildrenGet = "parentFun"></box>   this.$emit("get",msg) 
+ 或
+this.$parent.parentFun(msg)
 ```
