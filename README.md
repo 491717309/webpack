@@ -50,10 +50,6 @@ cnpm run dev
 
 8.单文件Vue组件“.vue”后缀格式
 
-### 这里有几个坑填一下
-1. <template></template>中只能有1个父级盒子。子集没有限制
-2. 注释掉webpack.base.conf.js文件module对象下的rules‘eslint-loader’格式限制，不然编写代码的时候格式要求极其的严格，严重影响你的指尖跳跃。
-
 ### vue组件开发笔记
 1. 子组件直接触发父组件方法
 ```
