@@ -50,6 +50,33 @@ cnpm run dev
 
 8.单文件Vue组件“.vue”后缀格式
 
+9.打包之后的回调操作，替换成.min文件
+```
+plugins: [
+		//编译完后触发'done'事件
+		//需要安装插件 cheerio
+		//cnpm install cheerio --save-dev
+        function(){
+        	let fag = false  //防止重复操作
+            this.plugin('done', (stats) => {
+            	const hash = stats.hash
+                fs.readFile('./dist/static/index.html', (err, data) => {
+                	if(!data) return
+                    const $ = cheerio.load(data.toString());
+                    //重新引入带hash的js文件
+                    if(fag||process.env.NODE_ENV !== 'production') return
+                    $('script[src*="vue.2.5.2"]').attr('src', 'http://afajr.oss-cn-hangzhou.aliyuncs.com/pcweb/js/vue.2.5.2.min.js');
+                    fag = true
+                    fs.writeFile('./dist/static/index.html', $.html(), err => {
+                        !err && console.log('Set has success: '+hash,new Date().getHours()+':'+new Date().getMinutes())
+                    })
+                })
+            })
+        },
+	]
+```
+
+
 ### vue组件开发笔记
 1. 子组件直接触发父组件方法
 ```
